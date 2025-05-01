@@ -8,5 +8,6 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "SQLAlchemy",
-    "pydantic"
+    "pydantic",
+    "pytest>=8.3.5",
 ]
