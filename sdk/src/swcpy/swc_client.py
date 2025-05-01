@@ -26,6 +26,7 @@ class SWCClient:
     LIST_PERFORMANCES_ENDPOINT = "/v0/performances/"
     LIST_TEAMS_ENDPOINT = "/v0/teams/"
     GET_COUNTS_ENDPOINT = "/v0/counts/"
+    LIST_WEEKS_ENDPOINT = "/v0/weeks/"
 
     BULK_FILE_BASE_URL = (
         "https://raw.githubusercontent.com/[prashsamosa]"
