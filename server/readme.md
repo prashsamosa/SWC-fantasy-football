@@ -263,7 +263,7 @@ docker image prune
 A typical FastAPI project structure:
 
 ```
-project_directory/
+server/
 ├── .dockerignore
 ├── .env                  # Environment variables (do not commit to version control)
 ├── .gitignore
@@ -283,7 +283,6 @@ project_directory/
 
 ---
 
-## Configuration Files
 
 ### Dockerfile with Pip
 
