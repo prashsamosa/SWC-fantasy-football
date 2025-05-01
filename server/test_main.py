@@ -23,6 +23,7 @@ def test_read_players_by_name():
     assert response.status_code == 200
     assert len(response.json()) == 1
     assert response.json()[0].get("player_id") == 2009
+    assert len(response.json()[0].get("performances")) == 17
 
 
 # test /v0/players/{player_id}/
@@ -30,6 +31,7 @@ def test_read_players_with_id():
     response = client.get("/v0/players/1001/")
     assert response.status_code == 200
     assert response.json().get("player_id") == 1001
+
 
 
 # test /v0/performances/
@@ -59,14 +61,14 @@ def test_read_leagues_with_id():
 def test_read_leagues():
     response = client.get("/v0/leagues/?skip=0&limit=500")
     assert response.status_code == 200
-    assert len(response.json()) == 5
+    assert len(response.json()) == 5 
 
 
 # test /v0/teams/
 def test_read_teams():
     response = client.get("/v0/teams/?skip=0&limit=500")
     assert response.status_code == 200
-    assert len(response.json()) == 20
+    assert len(response.json()) == 52 #v0.2
 
 
 # test /v0/teams/
@@ -75,6 +77,17 @@ def test_read_teams_for_one_league():
     assert response.status_code == 200
     assert len(response.json()) == 12
 
+#v0.2 test added weeks object
+def test_read_one_team():
+    response = client.get("/v0/teams/?skip=0&limit=500&team_name=?skip=0&limit=100&team_name=Wallaby%20Stew")
+    assert response.status_code == 200
+    teams = response.json()
+    assert len(teams) == 1
+    my_team = teams[0]
+    assert my_team.get("team_name") == "Wallaby Stew"
+    assert len(my_team.get("weekly_scores")) == 17
+    assert len(my_team.get("players")) == 7
+
 
 # test the count functions
 def test_counts():
@@ -82,5 +95,12 @@ def test_counts():
     response_data = response.json()
     assert response.status_code == 200
     assert response_data["league_count"] == 5
-    assert response_data["team_count"] == 20
+    assert response_data["team_count"] == 52 #v0.2
     assert response_data["player_count"] == 1018
+    assert response_data["week_count"] == 18 #v0.2
+
+#v0.2
+def test_read_weeks():
+    response = client.get("/v0/weeks/?skip=0&limit=1000")
+    assert response.status_code == 200
+    assert len(response.json()) == 18 #v0.2

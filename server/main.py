@@ -1,4 +1,4 @@
-"""FastAPI program - Chapter 5"""
+"""FastAPI program - Part two"""
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from sqlalchemy.orm import Session
@@ -23,13 +23,16 @@ You can get a list of NFL player performances, including the fantasy points they
 
 ## Membership
 Get information about all the SWC fantasy football leagues and the teams in them.
+
+## General
+Get information about the SWC fantasy football platform as a whole.
 """
 
 # FastAPI constructor with additional details added for OpenAPI Specification
 app = FastAPI(
     description=api_description,
     title="Sports World Central (SWC) Fantasy Football API",
-    version="0.1",
+    version="0.2",
 )
 
 
@@ -59,7 +62,7 @@ async def root():
     response_model=list[schemas.Player],
     summary="Get all the SWC players that meet all the parameters you sent with your request",
     description="""Use this endpoint to get a list of SWC players. You can use the parameters to filter down the players in the list. Names are not unique. You use the skip and limit to perform pagination of the API. Don't use the Player ID values to perform counts. Those are not guaranteed to be in order.""",
-    response_description="A list of NFL players that are in SWC fantasy football. They don't to be on a team.",
+    response_description="A list of NFL players that are in SWC fantasy football. They don't have to be on a team.",
     operation_id="v0_get_players",
     tags=["players"],
 )
@@ -190,7 +193,7 @@ def read_leagues(
     "/v0/teams/",
     response_model=list[schemas.Team],
     summary="Get all the SWC fantasy football teams that match the parameters you send",
-    description="""Use this endpoint to get lists of SWC fantasy football teams. You us the skip and limit to perform pagination of the API. Team name is not guaranteed to be unique. If you get the Team ID from another query such as v0_get_players, you can match it with the Team ID from this query.  Don't use the Team ID for counting or logic, because that is an internal ID and is not guaranteed to be sequential""",
+    description="""Use this endpoint to get lists of SWC fantasy football teams. You us the skip and limit to perform pagination of the API. Team name may not be unique. If you get the Team ID from another query you can match it with the Team ID from this query.  Don't use the Team ID for counting or logic.""",
     response_description="A list of teams on the SWC fantasy football website.",
     operation_id="v0_get_teams",
     tags=["membership"],
@@ -235,10 +238,43 @@ def read_teams(
     operation_id="v0_get_counts",
     tags=["analytics"],
 )
+
 def get_count(db: Session = Depends(get_db)):
     counts = schemas.Counts(
         league_count=crud.get_league_count(db),
         team_count=crud.get_team_count(db),
         player_count=crud.get_player_count(db),
+        week_count=crud.get_week_count(db), #v0.2
     )
     return counts
+
+#v0.2
+@app.get(
+    "/v0/weeks/",
+    response_model=list[schemas.Week],
+    summary="Get all the SWC weeks that meet all the parameters you sent with your request",
+    description="""Use this endpoint to get a list of SWC weeks. You can use the parameters to filter down the weeks in the list. You use the skip and limit to perform pagination of the API.""",
+    response_description="A list of weeks in SWC fantasy football.",
+    operation_id="v0_get_weeks",
+    tags=["general"],
+)
+def read_weeks(
+    skip: int = Query(
+        0, description="The number of items to skip at the beginning of API call."
+    ),
+    limit: int = Query(
+        100, description="The number of records to return after the skipped records."
+    ),
+    minimum_last_changed_date: date = Query(
+        None,
+        description="The minimum data of change that you want to return records. Exclude any records changed before this.",
+    ),
+    db: Session = Depends(get_db),
+):
+    weeks = crud.get_weeks(
+        db,
+        skip=skip,
+        limit=limit,
+        min_last_changed_date=minimum_last_changed_date,
+    )
+    return weeks
