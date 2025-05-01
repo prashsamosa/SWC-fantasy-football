@@ -546,13 +546,12 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi" },
-    { name = "fastapi", extras = ["standard"] },
-    { name = "httpx" },
-    { name = "pydantic" },
-    { name = "pytest", specifier = ">=8.3.5" },
-    { name = "sqlalchemy" },
-    { name = "uvicorn" },
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.0" },
+    { name = "httpx", specifier = ">=0.27.0" },
+    { name = "pydantic", specifier = ">=2.4.0" },
+    { name = "pytest", specifier = ">=8.1.0" },
+    { name = "sqlalchemy", specifier = ">=2.0.0" },
+    { name = "uvicorn", specifier = ">=0.23.0" },
 ]
 
 [[package]]
