@@ -41,3 +41,7 @@ temp/
 # Local configuration
 config.local.json
 settings.local.ini
+
+
+analysis/
+sdk/
