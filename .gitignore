@@ -31,7 +31,6 @@ desktop.ini
 *.log
 logs/
 dist/
-build/
 *.egg-info/
 
 # Temporary files
