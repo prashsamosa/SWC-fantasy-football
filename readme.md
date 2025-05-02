@@ -1,117 +1,175 @@
-# 🏈 SWC Fantasy Football Analytics Platform
+# 🏆 SWC Fantasy Football Analytics Platform
 
-A comprehensive platform for fantasy football data analysis, visualization, and ML-powered predictions.
+> *Transform your fantasy football experience with data-driven insights, ML-powered predictions, and championship-winning strategies*
 
-🚀 Getting Started
-1. Clone the repository
-2. Install dependencies: uv venv env && source env/bin/activate
-3. Install dependencies: uv pip install -r requirements.txt
-4. Run the Streamlit app: uv streamlit run streamlit_football_app.py
+![Fantasy Football Banner](https://img.shields.io/badge/Fantasy-Football-brightgreen?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.15+-red?style=for-the-badge&logo=streamlit&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.95+-green?style=for-the-badge&logo=fastapi&logoColor=white)
+![ML](https://img.shields.io/badge/ML-ONNX-yellow?style=for-the-badge&logo=onnx&logoColor=white)
 
+## 🚀 Quick Start
 
-## 📱 Streamlit Application
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/swc-fantasy-football.git
+cd swc-fantasy-football
 
-Our interactive Streamlit application provides dynamic visualizations of fantasy football data:
+# Set up environment with UV (faster than pip!)
+uv venv env
+source env/bin/activate      # On Windows: .\env\Scripts\activate
+uv pip install -r requirements.txt
+```
 
-<img src="/assets/first-page.png" alt="Team Rosters" style="max-width: 100%; height: auto;">
-<img src="/assets/second-page.png" alt="TD Stats" style="max-width: 100%; height: auto;">
-<img src="/assets/third-page.png" alt="Scoring Distribution" style="max-width: 100%; height: auto;">
-<img src="/assets/fourth-page.png" alt="Points Race" style="max-width: 100%; height: auto;">
-<img src="/assets/fifth-page.png" alt="Championship Map" style="max-width: 100%; height: auto;">
-<img src="/assets/sixth-page.png" alt="Analysis View" style="max-width: 100%; height: auto;">
+## 🌟 Features
 
+- **Interactive Analytics Dashboard**: Explore team performance, player statistics, and league trends
+- **AI-Powered Predictions**: ML models for player acquisition values and weekly performance forecasts
+- **Championship Visualization**: Visualize your path to victory with intuitive map displays
+- **REST API Integration**: Professional-grade API for seamless data access
+- **Player Acquisition Predictor**: Make smarter FAAB bids and roster decisions
 
+## 📱 Interactive Dashboard
 
+Our Streamlit application provides powerful visualizations to dominate your fantasy league:
 
-## 🔧 Key Components
+<table>
+  <tr>
+    <td width="50%"><img src="/assets/first-page.png" alt="Team Rosters" style="width: 100%;"/></td>
+    <td width="50%"><img src="/assets/second-page.png" alt="TD Stats" style="width: 100%;"/></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/third-page.png" alt="Scoring Distribution" style="width: 100%;"/></td>
+    <td><img src="/assets/fourth-page.png" alt="Points Race" style="width: 100%;"/></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/fifth-page.png" alt="Championship Map" style="width: 100%;"/></td>
+    <td><img src="/assets/sixth-page.png" alt="Analysis View" style="width: 100%;"/></td>
+  </tr>
+</table>
 
-### 🛠 Python SDK (`/sdk`)
+## 🔧 Architecture
 
-**Professional-grade API client library** featuring:
+The platform consists of four key components that work together to deliver comprehensive fantasy football insights:
 
-- ✅ **Pydantic models** for strong data validation
-- 🔁 **Exponential backoff** with retry handling 
-- 🪵 **Integrated logging** for simplified debugging
+### 🛠️ Python SDK (`/sdk`)
 
-📂 Folder: [`/sdk`](./sdk)
+A professional-grade API client library that handles all communication with our data services.
 
-### 📊 Data APIs
+**Key Features:**
+- ✅ **Type-Safe Data Models**: Built with Pydantic for reliable data validation
+- 🔁 **Resilient Connections**: Implements exponential backoff and retry mechanisms
+- 🪵 **Comprehensive Logging**: Debug with ease using integrated logging
 
-**RESTful services for data access and analysis:**
+📂 [`/sdk`](./sdk)
 
-- 🌐 **[Server API](https://swc-s-fantasy-football-api-service.onrender.com/docs)** - Core fantasy football data
-- 🧠 **[ML Model API](https://swc-fantasy-football.onrender.com/docs)** - Predictive analytics endpoints
+### 📊 Dual API System
 
-for running locally go to server and for model 
-and run fastapi run main.py
+**Two specialized APIs working in harmony:**
 
+<table>
+  <tr>
+    <td width="50%">
+      <h4>🌐 Server API</h4>
+      <a href="https://swc-s-fantasy-football-api-service.onrender.com/docs">
+        <img src="/assets/api.png" alt="Server API" style="width: 100%;"/>
+      </a>
+      <ul>
+        <li>Core fantasy football data endpoints</li>
+        <li>Historical statistics and trends</li>
+        <li>Team and player performance metrics</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <h4>🧠 ML Model API</h4>
+      <a href="https://swc-fantasy-football.onrender.com/docs">
+        <img src="/assets/deployed-ml-api.png" alt="ML Model API" style="width: 100%;"/>
+      </a>
+      <ul>
+        <li>Predictive analytics endpoints</li>
+        <li>Player acquisition value forecasts</li>
+        <li>Weekly performance projections</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
+**Local Development:**
+```bash
+# Server API
+cd server && uvicorn main:app --reload
 
-<img src="/assets/api.png" alt="Server API" style="max-width: 100%; height: auto;">
-<img src="/assets/deployed-ml-api.png" alt="ML Model API" style="max-width: 100%; height: auto;">
+# ML Model API
+cd ml_model && uvicorn main:app --reload
+```
 
+### 📦 Machine Learning Pipeline (`/ml_model`)
 
-also created a streamlit app player_acquisition_predictor.py to predict player acquisition using the ML model API.
+Our production-ready ML deployment provides accurate predictions for fantasy football decisions.
+
+**Technical Highlights:**
+- ⚙️ **Optimized Inference**: ONNX Runtime for high-performance predictions
+- 🌐 **RESTful Interface**: FastAPI endpoints for seamless model integration
+- 🧪 **End-to-End Pipeline**: Complete preprocessing and postprocessing workflow
+
+📂 [`/ml_model`](./ml_model)
+
+### 🤖 AI Assistant (`/ai_agent`)
+
+An advanced AI-powered fantasy football assistant to guide your strategy.
+
+**Powered By:**
+- 🧠 **LangGraph**: Sophisticated reasoning workflows for complex fantasy decisions
+- ✨ **Gemini API**: Natural language understanding for intuitive interactions
+- 📓 **Interactive Examples**: Jupyter notebooks demonstrating capabilities
+
+📂 [`/ai_agent`](./ai_agent)
+
+## 💰 Player Acquisition Predictor
+
+Make smarter bids with our ML-powered FAAB predictor:
+
 <img src="/assets/bid-predictor.png" alt="Player Acquisition Predictor" style="max-width: 100%; height: auto;">
 
-### 📦 Machine Learning Model (`/ml_model`)
-
-**Production-ready ML deployment** with:
-
-- ⚙️ **ONNX Runtime** for optimized inference
-- 🌐 **FastAPI** endpoints for model serving
-- 🧪 Complete pre/post-processing pipeline
-
-📂 Folder: [`/ml_model`](./ml_model)
-
-### 🤖 AI Agent (`/ai_agent`)
-
-**Advanced AI-powered assistant** built with:
-
-- 🧠 **LangGraph** for sophisticated reasoning workflows
-- ✨ **Gemini API** for natural language understanding
-- 📓 **Jupyter Notebooks** demonstrating capabilities
-
-📂 Folder: [`/ai_agent`](./ai_agent)
-
-## 📊 Sample Analysis
+## 📊 Example: Points Analysis
 
 ```python
 import pandas as pd
-import logging
+import matplotlib.pyplot as plt
 import swc_simple_client as swc
 
-# Configure logging
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
-logging.basicConfig(filename='shark_notebook.log', level=logging.INFO)
+# Configure API connection
+client = swc.FFClient("https://swc-s-fantasy-football-api-service.onrender.com")
 
-# API connection (local or remote)
-base_url = "http://127.0.0.1:8000"  # Local development
-# base_url = "https://swc-s-fantasy-football-api-service.onrender.com"  # Production
-
-# Fetch and analyze weekly data
-week_api_response = swc.call_api_endpoint(base_url, swc.LIST_WEEKS_ENDPOINT)
-weeks_df = pd.DataFrame(week_api_response.json())
+# Fetch weekly data
+weeks_df = client.get_weeks()
 weeks_df['year'] = weeks_df['week_number'].str.slice(0, 4).astype(int)
 weeks_df['week'] = weeks_df['week_number'].str.slice(4, 6).astype(int)
 
 # Filter to regular season
-weeks_df = weeks_df.query('week <= 14')
+reg_season = weeks_df.query('week <= 14')
 
 # Aggregate yearly point totals
-max_totals_grouped_df = weeks_df.groupby('year').agg(
-    ppr_12_max_points=('ppr_12_max_points', 'sum'), 
-    half_ppr_8_max_points=('half_ppr_8_max_points', 'sum'))
+yearly_totals = reg_season.groupby('year').agg({
+    'ppr_12_max_points': 'sum',
+    'half_ppr_8_max_points': 'sum'
+})
 
-display(max_totals_grouped_df)
-
+# Visualize trend
+plt.figure(figsize=(10, 6))
+yearly_totals.plot(kind='bar', color=['#1f77b4', '#ff7f0e'])
+plt.title('Fantasy Points by Season', fontsize=16)
+plt.xlabel('Year', fontsize=12)
+plt.ylabel('Total Points', fontsize=12)
+plt.legend(['PPR (12-team)', 'Half PPR (8-team)'])
+plt.grid(axis='y', alpha=0.3)
+plt.tight_layout()
 ```
 
+## 📈 Data Sources
 
-## 📁 Data Sources
+The platform integrates multiple data sources for comprehensive analysis:
 
-1. API-based data for real-time team and player statistics
-2. CSV historical data for long-term trends and championship visualizations
-3. Run the Streamlit app: streamlit run streamlit_football_app.py
-4. Explore fantasy football insights through interactive visualizations!
+- **Live API Data**: Real-time team and player statistics
+- **Historical CSV Data**: Long-term trends and championship analytics
+- **Custom Metrics**: Proprietary scoring and performance indicators
