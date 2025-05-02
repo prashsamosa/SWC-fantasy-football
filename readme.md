@@ -2,16 +2,26 @@
 
 A comprehensive platform for fantasy football data analysis, visualization, and ML-powered predictions.
 
+🚀 Getting Started
+1. Clone the repository
+2. Install dependencies: uv venv env && source env/bin/activate
+3. Install dependencies: uv pip install -r requirements.txt
+4. Run the Streamlit app: uv streamlit run streamlit_football_app.py
+
+
 ## 📱 Streamlit Application
 
 Our interactive Streamlit application provides dynamic visualizations of fantasy football data:
 
-![Team Rosters](/assets/first-page.png)
-![TD Stats](/assets/second-page.png)
-![Scoring Distribution](/assets/third-page.png)
-![Points Race](/assets/fourth-page.png)
-![Championship Map](/assets/fifth-page.png)
-![Analysis View](/assets/sixth-page.png)
+<img src="/assets/first-page.png" alt="Team Rosters" style="max-width: 100%; height: auto;">
+<img src="/assets/second-page.png" alt="TD Stats" style="max-width: 100%; height: auto;">
+<img src="/assets/third-page.png" alt="Scoring Distribution" style="max-width: 100%; height: auto;">
+<img src="/assets/fourth-page.png" alt="Points Race" style="max-width: 100%; height: auto;">
+<img src="/assets/fifth-page.png" alt="Championship Map" style="max-width: 100%; height: auto;">
+<img src="/assets/sixth-page.png" alt="Analysis View" style="max-width: 100%; height: auto;">
+
+
+
 
 ## 🔧 Key Components
 
@@ -32,8 +42,17 @@ Our interactive Streamlit application provides dynamic visualizations of fantasy
 - 🌐 **[Server API](https://swc-s-fantasy-football-api-service.onrender.com/docs)** - Core fantasy football data
 - 🧠 **[ML Model API](https://swc-fantasy-football.onrender.com/docs)** - Predictive analytics endpoints
 
-![Server API](/assets/api.png)
-![ML Model API](/assets/deployed-ml-api.png)
+for running locally go to server and for model 
+and run fastapi run main.py
+
+
+
+<img src="/assets/api.png" alt="Server API" style="max-width: 100%; height: auto;">
+<img src="/assets/deployed-ml-api.png" alt="ML Model API" style="max-width: 100%; height: auto;">
+
+
+also created a streamlit app player_acquisition_predictor.py to predict player acquisition using the ML model API.
+<img src="/assets/bid-predictor.png" alt="Player Acquisition Predictor" style="max-width: 100%; height: auto;">
 
 ### 📦 Machine Learning Model (`/ml_model`)
 
@@ -89,14 +108,10 @@ display(max_totals_grouped_df)
 
 ```
 
-📁 Data Sources
+
+## 📁 Data Sources
 
 1. API-based data for real-time team and player statistics
 2. CSV historical data for long-term trends and championship visualizations
-
-🚀 Getting Started
-1. Clone the repository
-2. Install dependencies: uv venv env && source env/bin/activate
-3. Install dependencies: uv pip install -r requirements.txt
-4. Run the Streamlit app: streamlit run streamlit_football_app.py
-5. Explore fantasy football insights through interactive visualizations!
+3. Run the Streamlit app: streamlit run streamlit_football_app.py
+4. Explore fantasy football insights through interactive visualizations!
