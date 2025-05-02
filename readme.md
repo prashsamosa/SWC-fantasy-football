@@ -42,9 +42,8 @@ Our interactive Streamlit application provides dynamic visualizations of fantasy
 - 🌐 **[Server API](https://swc-s-fantasy-football-api-service.onrender.com/docs)** - Core fantasy football data
 - 🧠 **[ML Model API](https://swc-fantasy-football.onrender.com/docs)** - Predictive analytics endpoints
 
-for running locally go to server and for model 
+for running locally go to server folder and for model api go to model folder 
 and run fastapi run main.py
-
 
 
 <img src="/assets/api.png" alt="Server API" style="max-width: 100%; height: auto;">
