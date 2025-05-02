@@ -53,7 +53,7 @@ and run fastapi run main.py
 also created a streamlit app player_acquisition_predictor.py to predict player acquisition using the ML model API.
 <img src="/assets/bid-predictor.png" alt="Player Acquisition Predictor" style="max-width: 100%; height: auto;">
 
-### 📦 Machine Learning Model (`/ml_model`)
+### 📦 Machine Learning Model (`/model`)
 
 **Production-ready ML deployment** with:
 
