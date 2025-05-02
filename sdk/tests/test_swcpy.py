@@ -5,11 +5,16 @@ from swcpy.schemas import League, Team, Player, Performance
 from io import BytesIO 
 import pyarrow.parquet as pq 
 import pandas as pd 
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
  
 def test_health_check(): 
     """Tests health check from SDK"""
-    config = SWCConfig(swc_base_url="http://127.0.0.1:8000",backoff=False)
-    #config = SWCConfig(backoff=False)
+    # Using environment variable instead of hardcoded URL
+    config = SWCConfig(backoff=False)
     client = SWCClient(config)    
     response = client.get_health_check()
     assert response.status_code == 200
@@ -17,7 +22,8 @@ def test_health_check():
 
 def test_list_leagues(): 
     """Tests get leagues from SDK"""
-    config = SWCConfig(swc_base_url="http://127.0.0.1:8000",backoff=False)
+    # Using environment variable instead of hardcoded URL
+    config = SWCConfig(backoff=False)
     client = SWCClient(config)    
     leagues_response = client.list_leagues()
     # Assert the endpoint returned a list object
@@ -30,9 +36,8 @@ def test_list_leagues():
 
 def test_bulk_player_file_parquet(): 
     """Tests bulk player download through SDK - Parquet"""
-
-    # config = SWCConfig(bulk_file_format = "parquet") 
-    config = SWCConfig(swc_base_url="http://127.0.0.1:8000", bulk_file_format="parquet")
+    # Using environment variable instead of hardcoded URL
+    config = SWCConfig(bulk_file_format="parquet") 
     client = SWCClient(config)    
 
     player_file_parquet = client.get_bulk_player_file()

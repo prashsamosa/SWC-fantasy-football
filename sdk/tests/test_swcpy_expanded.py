@@ -10,7 +10,12 @@ import os
 from io import StringIO
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
+# Set the environment variable if it's not already set
+if not os.getenv('SWC_API_BASE_URL'):
+    os.environ['SWC_API_BASE_URL'] = 'http://127.0.0.1:8000'
 
 current_dir = os.path.dirname(__file__)
 data_dir = current_dir + "/test_data_output/"
@@ -179,7 +184,7 @@ def test_list_performances_by_date():
 def test_bulk_player_file_parquet():
     """Tests bulk player download through SDK - Parquet"""
 
-    config = SWCConfig(bulk_file_format = "parquet")
+    config = SWCConfig(bulk_file_format="parquet")
     client = SWCClient(config)    
 
     player_file_parquet = client.get_bulk_player_file()
