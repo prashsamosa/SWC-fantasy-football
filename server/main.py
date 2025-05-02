@@ -28,11 +28,24 @@ Get information about all the SWC fantasy football leagues and the teams in them
 Get information about the SWC fantasy football platform as a whole.
 """
 
-# FastAPI constructor with additional details added for OpenAPI Specification
+# # FastAPI constructor with additional details added for OpenAPI Specification
+# app = FastAPI(
+#     description=api_description,
+#     title="Sports World Central (SWC) Fantasy Football API",
+#     version="0.2",
+# )
+
+# updated constructor with server URL for building Gem
+
 app = FastAPI(
     description=api_description,
     title="Sports World Central (SWC) Fantasy Football API",
     version="0.2",
+    servers=[
+        {"url": "http://127.0.0.1:8000/",
+        "description": "Main server"} 
+    ]
+
 )
 
 
