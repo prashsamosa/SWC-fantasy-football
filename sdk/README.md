@@ -28,7 +28,7 @@ To call the SDK functions for normal API endpoints, here is an example:
 from swcpy import SWCClient
 from swcpy import SWCConfig
 
-config = SWCConfig(swc_base_url="http://127.0.0.1:8000/",backoff=False)
+config = SWCConfig(swc_base_url="",backoff=False)
 client = SWCClient(config)    
 leagues_response = client.list_leagues()
 print(leagues_response)
