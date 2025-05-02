@@ -2,7 +2,6 @@ altair==5.5.0
 anyio==4.9.0
 appdirs==1.4.4
 attrs==25.3.0
-backoff==2.2.1
 blinker==1.9.0
 cachetools==5.5.2
 certifi==2025.4.26
