@@ -8,7 +8,7 @@ version = "0.0.3"
 authors = [
   { name="[Your Name]" },
 ]
-description = "Example Software Development Kit (SDK) from Hands-On API Book for AI and Data Science"
+description = "Software Development Kit (SDK)"
 requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",

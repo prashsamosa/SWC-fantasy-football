@@ -8,7 +8,7 @@ import pandas as pd
  
 def test_health_check(): 
     """Tests health check from SDK"""
-    config = SWCConfig(swc_base_url="http://0.0.0.0:8000",backoff=False)
+    config = SWCConfig(swc_base_url="http://127.0.0.1:8000/",backoff=False)
     #config = SWCConfig(backoff=False)
     client = SWCClient(config)    
     response = client.get_health_check()
@@ -17,7 +17,7 @@ def test_health_check():
 
 def test_list_leagues(): 
     """Tests get leagues from SDK"""
-    config = SWCConfig(swc_base_url="http://0.0.0.0:8000",backoff=False)
+    config = SWCConfig(swc_base_url="http://127.0.0.1:8000",backoff=False)
     client = SWCClient(config)    
     leagues_response = client.list_leagues()
     # Assert the endpoint returned a list object
@@ -25,7 +25,7 @@ def test_list_leagues():
     # Assert each item in the list is an instance of Pydantic League object
     for league in leagues_response:
         assert isinstance(league, League)
-    # Asset that 5 League objects are returned
+    # Assert that 5 League objects are returned
     assert len(leagues_response) == 5
 
 def test_bulk_player_file_parquet(): 

@@ -28,14 +28,14 @@ class SWCClient:
     GET_COUNTS_ENDPOINT = "/v0/counts/"
 
     BULK_FILE_BASE_URL = (
-        "https://raw.githubusercontent.com/[github ID]"
-        + "/portfolio-project/main/bulk/"
+        "https://raw.githubusercontent.com/prashsamosa"
+        + "/SWC-fantasy-football/main/bulk/"
     )
 
 
 
     def __init__(self, input_config: config.SWCConfig):
-        """Class constructor that sets varibles from configuration object."""
+        """Class constructor that sets variables from configuration object."""
 
         logger.debug(f"Bulk file base URL: {self.BULK_FILE_BASE_URL}")
 

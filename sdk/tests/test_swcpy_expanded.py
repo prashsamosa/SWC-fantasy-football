@@ -41,7 +41,7 @@ def test_environment_variable():
     # Print the value of the environment variable
     print(f"API_BASE_URL: {swc_base_url}")
     # Check if the environment variable is set correctly
-    assert(swc_base_url == 'http://0.0.0.0:8000')
+    assert(swc_base_url == 'http://127.0.0.1:8000/')
 
 
 def test_health_check():
