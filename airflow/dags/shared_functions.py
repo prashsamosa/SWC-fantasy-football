@@ -23,13 +23,13 @@ def upsert_player_data(player_json):
             # Insert each player record into the 'player' table
             for player in player_data:
                 try:
-                    cursor.execute(""" <4>
+                    cursor.execute("""
                         INSERT INTO player (
                             player_id, gsis_id, first_name, last_name, 
                             position, last_changed_date
                         ) 
                         VALUES (?, ?, ?, ?, ?, ?) 
-                        ON CONFLICT(player_id) DO UPDATE <5>
+                        ON CONFLICT(player_id) DO UPDATE
                         SET
                             gsis_id = excluded.gsis_id,
                             first_name = excluded.first_name,
