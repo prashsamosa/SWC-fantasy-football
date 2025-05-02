@@ -7,7 +7,10 @@ A comprehensive platform for fantasy football data analysis, visualization, and 
 2. Install dependencies: uv venv env && source env/bin/activate
 3. Install dependencies: uv pip install -r requirements.txt
 4. Run the Streamlit app: uv streamlit run streamlit_football_app.py
+5. for running locally go to server folder and run fastapi run main.py
+6. for model api go to model folder and run fastapi run main.py
 
+and run fastapi run main.py
 
 ## 📱 Streamlit Application
 
