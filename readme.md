@@ -34,7 +34,7 @@ streamlit run streamlit_football_app.py
 
 ## 📱 Interactive Dashboard
 
-Our Streamlit application provides powerful visualizations to dominate your fantasy league:
+Streamlit application provides powerful visualizations to dominate fantasy league:
 
 <table>
   <tr>
