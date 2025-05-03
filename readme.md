@@ -20,10 +20,21 @@ uv venv env
 source env/bin/activate      # On Windows: .\env\Scripts\activate
 uv pip install -r requirements.txt
 
+# Server API
+cd server && uvicorn main:app --reload
+
 # Launch the Streamlit dashboard
 cd stremalit 
 streamlit run streamlit_football_app.py
-```
+
+# ML Model API
+cd ml_model && uvicorn main:app --reload
+
+# Streamlit Player Acquisition Cost Predictor
+cd player_acquisition_cost_predictor 
+streamlit run player_acquisition_predictor.py
+  
+  ```
 
 ## 🌟 Features
 
@@ -33,39 +44,6 @@ streamlit run streamlit_football_app.py
 - **REST API Integration**: Professional-grade API for seamless data access
 - **Player Acquisition Predictor**: Make smarter FAAB bids and roster decisions
 
-## 📱 Interactive Dashboard
-
-Streamlit application provides powerful visualizations to dominate fantasy league:
-
-<table>
-  <tr>
-    <td width="50%"><img src="/assets/first-page.png" alt="Team Rosters" style="width: 100%;"/></td>
-    <td width="50%"><img src="/assets/second-page.png" alt="TD Stats" style="width: 100%;"/></td>
-  </tr>
-  <tr>
-    <td><img src="/assets/third-page.png" alt="Scoring Distribution" style="width: 100%;"/></td>
-    <td><img src="/assets/fourth-page.png" alt="Points Race" style="width: 100%;"/></td>
-  </tr>
-  <tr>
-    <td><img src="/assets/fifth-page.png" alt="Championship Map" style="width: 100%;"/></td>
-    <td><img src="/assets/sixth-page.png" alt="Analysis View" style="width: 100%;"/></td>
-  </tr>
-</table>
-
-## 🔧 Architecture
-
-The platform consists of four key components that work together to deliver comprehensive fantasy football insights:
-
-### 🛠️ Python SDK (`/sdk`)
-
-A professional-grade API client library that handles all communication with our data services.
-
-**Key Features:**
-- ✅ **Type-Safe Data Models**: Built with Pydantic for reliable data validation
-- 🔁 **Resilient Connections**: Implements exponential backoff and retry mechanisms
-- 🪵 **Comprehensive Logging**: Debug with ease using integrated logging
-
-📂 [`/sdk`](./sdk)
 
 ### 📊 Dual API System
 
@@ -98,14 +76,48 @@ A professional-grade API client library that handles all communication with our 
   </tr>
 </table>
 
-**Local Development:**
-```bash
-# Server API
-cd server && uvicorn main:app --reload
 
-# ML Model API
-cd ml_model && uvicorn main:app --reload
-```
+## 📱 Interactive Dashboard
+
+Streamlit application provides powerful visualizations to dominate fantasy league:
+
+<table>
+  <tr>
+    <td width="50%"><img src="/assets/first-page.png" alt="Team Rosters" style="width: 100%;"/></td>
+    <td width="50%"><img src="/assets/second-page.png" alt="TD Stats" style="width: 100%;"/></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/third-page.png" alt="Scoring Distribution" style="width: 100%;"/></td>
+    <td><img src="/assets/fourth-page.png" alt="Points Race" style="width: 100%;"/></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/fifth-page.png" alt="Championship Map" style="width: 100%;"/></td>
+    <td><img src="/assets/sixth-page.png" alt="Analysis View" style="width: 100%;"/></td>
+  </tr>
+</table>
+
+## 💰 Player Acquisition Predictor
+
+Make smarter bids with our ML-powered FAAB predictor:
+
+<img src="/assets/bid-predictor.png" alt="Player Acquisition Predictor" style="max-width: 100%; height: auto;">
+
+
+## 🔧 Architecture
+
+<!-- The platform consists of four key components that work together to deliver comprehensive fantasy football insights: -->
+
+### 🛠️ Python SDK (`/sdk`)
+
+A professional-grade API client library that handles all communication with our data services.
+
+**Key Features:**
+- ✅ **Type-Safe Data Models**: Built with Pydantic for reliable data validation
+- 🔁 **Resilient Connections**: Implements exponential backoff and retry mechanisms
+- 🪵 **Comprehensive Logging**: Debug with ease using integrated logging
+
+📂 [`/sdk`](./sdk)
+
 
 ### 📦 Machine Learning Pipeline (`/ml_model`)
 
@@ -129,11 +141,6 @@ An advanced AI-powered fantasy football assistant to guide your strategy.
 
 📂 [`/ai_agent`](./ai_agent)
 
-## 💰 Player Acquisition Predictor
-
-Make smarter bids with our ML-powered FAAB predictor:
-
-<img src="/assets/bid-predictor.png" alt="Player Acquisition Predictor" style="max-width: 100%; height: auto;">
 
 ## 📊 Example: Points Analysis
 
