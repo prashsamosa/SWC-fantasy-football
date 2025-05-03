@@ -21,6 +21,7 @@ source env/bin/activate      # On Windows: .\env\Scripts\activate
 uv pip install -r requirements.txt
 
 # Launch the Streamlit dashboard
+cd stremalit 
 streamlit run streamlit_football_app.py
 ```
 
